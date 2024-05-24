@@ -1,7 +1,8 @@
 #include <sys/socket.h> // socket()
 #include <arpa/inet.h>  // hton*()
 #include <string.h>     // memset()
-#include <unistd.h> 
+#include <unistd.h>
+#include <thread> 
 #include <iostream>
 using namespace std;
 //
@@ -104,9 +105,12 @@ int main(int argc, char **argv) {
             cout << "Error calling accept()\n";
             exit(EXIT_FAILURE);
         }
-        
+        // Create a new thread to handle the client
+        std::thread client_thread(handle_client, socket_cliente, direccionCliente);
+
+        // Detach the thread, allowing it to operate independently of the main thread
+        client_thread.detach();
         //
-        jugar(socket_cliente, direccionCliente);
     }
     
     //
