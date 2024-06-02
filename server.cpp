@@ -21,7 +21,7 @@ private:
 
     void manejarCliente(int client_socket, const std::string& client_info);
     void mostrarTablero(char board[6][7]);
-    bool checkWin(char board[6][7], char player);
+    bool chequearGanador(char board[6][7], char player);
 };
 
 JuegoServidor::JuegoServidor(int port) {
@@ -61,7 +61,7 @@ void JuegoServidor::start() {
         std::string client_info = inet_ntoa(address.sin_addr) + std::string(":") + std::to_string(ntohs(address.sin_port));
         std::cout << "Juego nuevo[" << client_info << "]" << std::endl;
 
-        client_threads.push_back(std::thread(&GameServer::handleClient, this, client_socket, client_info));
+        client_threads.push_back(std::thread(&JuegoServidor::manejarCliente, this, client_socket, client_info));
     }
 }
 
