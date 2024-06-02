@@ -49,7 +49,7 @@ void JuegoCliente::start() {
 
     // Juego
     while (true) {
-        mostrarTablero(board);
+
 
         // Turno del cliente
         if (client_turn) {
