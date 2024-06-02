@@ -65,7 +65,7 @@ void JuegoServidor::start() {
     }
 }
 
-void JuegoServidor::manejarCLiente(int client_socket, const std::string& client_info) {
+void JuegoServidor::manejarCliente(int client_socket, const std::string& client_info) {
     char board[6][7] = {};
     memset(board, '-', sizeof(board));
 
