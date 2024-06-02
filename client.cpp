@@ -49,8 +49,6 @@ void JuegoCliente::start() {
 
     // Juego
     while (true) {
-
-
         // Turno del cliente
         if (client_turn) {
             int column;
