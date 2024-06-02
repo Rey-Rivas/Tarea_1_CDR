@@ -50,6 +50,7 @@ void JuegoServidor::start() {
     std::cout << "Esperando conexiones ..." << std::endl;
     srand(time(0));
 
+    // Aceptar conexiones
     while (true) {
         int addrlen = sizeof(address);
         int client_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen);
@@ -65,6 +66,7 @@ void JuegoServidor::start() {
     }
 }
 
+// Manejar cliente
 void JuegoServidor::manejarCliente(int client_socket, const std::string& client_info) {
     char board[6][7] = {};
     memset(board, '-', sizeof(board));
@@ -73,6 +75,7 @@ void JuegoServidor::manejarCliente(int client_socket, const std::string& client_
     send(client_socket, &client_turn, sizeof(client_turn), 0);
     std::cout << "Juego [" << client_info << "]: " << (client_turn ? "inicia juego el cliente." : "inicia juego el servidor.") << std::endl;
 
+    // Juego
     while (true) {
         int column;
         if (client_turn) {
