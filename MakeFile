@@ -1,10 +1,13 @@
+CC = g++
+CFLAGS = -Wall -std=c++11
+
 all: servidor cliente
 
 servidor: server.cpp
-	g++ -o servidor server.cpp -pthread
+	$(CC) $(CFLAGS) -o servidor server.cpp
 
 cliente: client.cpp
-	g++ -o cliente client.cpp
+	$(CC) $(CFLAGS) -o cliente client.cpp
 
 clean:
 	rm -f servidor cliente
