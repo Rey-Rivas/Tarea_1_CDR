@@ -106,7 +106,7 @@ int main(int argc, char **argv) {
             exit(EXIT_FAILURE);
         }
         // Create a new thread to handle the client
-        std::thread client_thread(handle_client, socket_cliente, direccionCliente);
+        std::thread client_thread(jugar, socket_cliente, direccionCliente);
 
         // Detach the thread, allowing it to operate independently of the main thread
         client_thread.detach();

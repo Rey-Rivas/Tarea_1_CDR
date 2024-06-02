@@ -1,0 +1,10 @@
+all: servidor cliente
+
+servidor: server.cpp
+	g++ -o servidor server.cpp -pthread
+
+cliente: client.cpp
+	g++ -o cliente client.cpp
+
+clean:
+	rm -f servidor cliente
